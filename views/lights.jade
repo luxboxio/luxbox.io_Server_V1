@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .container
+    h1 lights
+    p set colors and add new elements
+    .row
+      .col-sm-2(style='background-color:yellow;')
+        p Logo
+      .col-sm-4(style='background-color:pink;')
+        p Info
+      .col-sm-4(style='background-color:yellow;')
+        p Values
+        input#ex1(data-slider-id='ex1Slider', type='text', data-slider-min='0', data-slider-max='255', data-slider-step='1', data-slider-value='0')
+      .col-sm-2(style='background-color:pink;')
+        p buttons
+

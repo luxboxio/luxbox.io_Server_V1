@@ -1,0 +1,19 @@
+body {
+    padding: 50px;
+    font: 14px "Ubuntu", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+body {
+    padding-top: 50px;
+}
+
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.navbar-brand {}
