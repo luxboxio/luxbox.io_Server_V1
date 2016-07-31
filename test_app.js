@@ -10,17 +10,17 @@ server.listen(1337, '127.0.0.1');
 */
 
 var PORT = 1234;
-var HOST = '192.168.10.240';
+var HOST = '192.168.10.230';
 
 var data = '{' +
     '"id": "18fe34d457a",' +
     '"area": 0,' +
     '"type": "rgb",' +
-    '"mode": "color"' + // e.g. color / fade / pulse / rainbow / 
+    '"mode": "color",' + // e.g. color / fade / pulse / rainbow_fade / rainbow_chase
     '"values": {' +
-    '  "red": 255,' +
+    '  "red": 0,' +
     '  "green": 0,' +
-    '  "blue": 90' +
+    '  "blue": 0' +
     '  }' +
     '}';
 

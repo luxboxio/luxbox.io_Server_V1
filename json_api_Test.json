@@ -1,0 +1,122 @@
+// Information from element sent to light server
+{
+    "id": "18fe34d44e43",
+    "name": "Testelement Nr.1",
+    "areas": [{
+        "number": 0,
+        "type": "rgb"
+    }, {
+        "number": 1,
+        "type": "rgbw"
+    }]
+}
+
+
+// Information from light server sent to element
+{
+    "id": "18fe34d44e43",
+    "areas": [{
+        "number": 0,
+        "type": "rgb",
+        "mode": "color",
+        "values": {
+            "red": 0,
+            "green": 255,
+            "blue": 0
+        }
+    }, {
+        "number": 1,
+        "type": "rgbw",
+        "mode": "pulse",
+        "values": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "white": 255
+        }
+    }]
+}
+
+{
+    "_id": "57953e70fa71ce3c168db06e",
+    "light_id": "18fe34d44e43",
+    "name": "Logo vspace.one",
+    "areas": [{
+        "number": 0,
+        "name": "inner logo",
+        "type": "rgb",
+        "mode": "color",
+        "values": [{
+                "color": "red",
+                "value": 128
+            }, {
+                "color": "green",
+                "value": 32
+            }, {
+                "color": "blue",
+                "value": 0
+            }
+
+        ]
+    }, {
+        "number": 1,
+        "name": "outer ring",
+        "type": "rgbw",
+        "mode": "color",
+        "values": [{
+                "color": "red",
+                "value": 27
+            }, {
+                "color": "green",
+                "value": 12
+            }, {
+                "color": "blue",
+                "value": 7
+            }, {
+                "color": "white",
+                "value": 143
+            }
+
+        ]
+    }]
+}
+
+{
+    "_id": ObjectId("5797e5e4fa71ce3c168db075"),
+    "light_id": "18fe34d44e43",
+    "name": "Logo vspace.one",
+    "areas": [{
+        "number": 0,
+        "name": "inner logo",
+        "color_type": "rgb",
+        "color_mode": "color",
+        "values": [{
+            "color": "red",
+            "value": 128
+        }, {
+            "color": "green",
+            "value": 32
+        }, {
+            "color": "blue",
+            "value": 0
+        }]
+    }, {
+        "number": 1,
+        "name": "outer ring",
+        "color_type": "rgbw",
+        "color_mode": "color",
+        "values": [{
+            "color": "red",
+            "value": 27
+        }, {
+            "color": "green",
+            "value": 12
+        }, {
+            "color": "blue",
+            "value": 7
+        }, {
+            "color": "white",
+            "value": 143
+        }]
+    }]
+}

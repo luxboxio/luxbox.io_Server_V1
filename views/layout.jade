@@ -1,5 +1,5 @@
 doctype html
-html(lang='en')
+html(lang='en' ng-app='lightswitch')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -25,7 +25,8 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/') lightswitch.space
+          a.navbar-brand(href='/')
+            img(src='images/Logo.svg', alt='Website Logo', height='80%')
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
@@ -36,11 +37,11 @@ html(lang='en')
               a(href='/settings') settings
         // /.nav-collapse
     .container
-        block content
+      block content
     // /.container
     //
-      Bootstrap core JavaScript
-      ==================================================
+    // Bootstrap core JavaScript
+    // ==================================================
     // Placed at the end of the document so the pages load faster
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     script.
@@ -48,5 +49,10 @@ html(lang='en')
     // Latest compiled and minified JavaScript
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.1.1/bootstrap-slider.js', crossorigin='anonymous')
+    
+    // Angular Material requires Angular.js Libraries
+    script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js', crossorigin='anonymous')
+    script(type='text/javascript', src='javascripts/script.js')
+
 
 

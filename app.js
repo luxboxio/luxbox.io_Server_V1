@@ -5,10 +5,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Database
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/lightswitch');
+
+require('./models/lightelement');
+
+// Main Routes
 var routes = require('./routes/index');
+var lights = require('./routes/lights');
 var scenes = require('./routes/scenes');
 var settings = require('./routes/settings');
 
+// Express Server Application
 var app = express();
 
 // view engine setup
@@ -24,6 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/lights', lights);
 app.use('/scenes', scenes);
 app.use('/settings', settings);
 

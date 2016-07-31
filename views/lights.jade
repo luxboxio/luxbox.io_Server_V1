@@ -1,17 +1,30 @@
 extends layout
 
 block content
-  .container
+  .container(ng-controller="LighSwitchController")
     h1 lights
+    .well {{lights}}
     p set colors and add new elements
-    .row
-      .col-sm-2(style='background-color:yellow;')
-        p Logo
-      .col-sm-4(style='background-color:pink;')
-        p Info
-      .col-sm-4(style='background-color:yellow;')
-        p Values
-        input#ex1(data-slider-id='ex1Slider', type='text', data-slider-min='0', data-slider-max='255', data-slider-step='1', data-slider-value='0')
-      .col-sm-2(style='background-color:pink;')
-        p buttons
-
+    .row.well(ng-repeat='light in lights')
+      .col-sm-2
+        img.img-circle(src='images/lightelement_thumb_1.png', alt='lightelement thumbnail', width='96', height='96')
+      .col-sm-4
+        h3 {{light.name}}
+        p ID: {{light.light_id}}
+        p IP: 192.168.xxx.xxx
+        p areas: {{light.areas.length}}
+      .col-sm-4
+        .col-sm-12.form.form-horizontal(role='form', ng-repeat='area in light.areas')
+          div
+            h4.col-sm-12 area \#{{area.number + 1}}: {{area.name}}
+              small  (type: {{area.color_type}})
+          .form-group.form-group-md(ng-repeat='value in area.values')
+            .control-label.col-sm-3.text-right {{value.color}}
+            .col-sm-9
+              input#md.form-control(type='text', ng-model='value.value')
+              //input#md.form-control(type='text', value='{{value.value}}')
+      .col-sm-2
+        .col-sm-6
+          button.btn.btn-success(type='button', ng-click='setColor(light)') Set
+        .col-sm-6
+          button.btn.btn-danger(type='button', ng-click='lightOff(light)') Off
