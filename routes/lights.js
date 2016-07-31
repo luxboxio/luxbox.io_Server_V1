@@ -17,7 +17,6 @@ router.get('/', function(req, res, next) {
 
 });
 
-
 // === Get one entry ===
 router.get('/:light_id', function(req, res, next) {
     // ToDo: implement function
@@ -42,6 +41,20 @@ router.put('/:light_id', function(req, res, next) {
 
     lightelement.findByIdAndUpdate(req.params.light_id, tmpLight, function(err, result) {
         if (err) throw err;
+
+        var PORT = 1234;
+        var HOST = '192.168.0.39';
+        var dgram = require('dgram');
+        var message = Buffer(JSON.stringify(tmpLight));
+
+        var client = dgram.createSocket('udp4');
+        client.send(message, 0, message.length, PORT, HOST, function(err, bytes) {
+            if (err) throw err;
+            console.log('UDP message sent to ' + HOST + ':' + PORT);
+            client.close();
+        });
+
+
         res.json('update of \'' + req.params.light_id + '\' was a success!');
     });
 });

@@ -19,7 +19,9 @@ var lightelementSchema = new Schema({
     }],
     created_at: Date,
     updated_at: Date
-}, { collection: 'lightelement' });
+}, {
+    collection: 'lightelement'
+});
 
 // on every save, add the date
 lightelementSchema.pre('save', function(next) {
@@ -30,8 +32,9 @@ lightelementSchema.pre('save', function(next) {
     this.updated_at = currentDate;
 
     // if created_at doesn't exist, add to that field
-    if (!this.created_at)
+    if (!this.created_at) {
         this.created_at = currentDate;
+    }
 
     next();
 });

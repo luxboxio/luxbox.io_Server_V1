@@ -1,5 +1,5 @@
 /node_modules/*
 /_idea/*
 *.sublime-project
-
+*.idea
 *.sublime-workspace
