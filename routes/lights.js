@@ -1,3 +1,4 @@
+var debug = require('debug')('lightswitch_space');
 var express = require('express');
 var router = express.Router();
 
@@ -8,25 +9,28 @@ var lightelement = mongoose.model('lightelement');
 
 // === Get all entries ===
 router.get('/', function(req, res, next) {
-
+    debug('test!!!');
     lightelement.find({}, function(err, lightelements) {
         if (err) throw err;
-        // object of all the lights
         res.json(lightelements);
     });
-
 });
 
 // === Get one entry ===
 router.get('/:light_id', function(req, res, next) {
-    // ToDo: implement function
+
+    lightelement.findById(req.params.light_id, function(err, lightelement) {
+        if (err) throw err;
+        res.json(lightelement);
+    });
+
 });
 
 
 // === Create a new entry ===
 router.post('/', function(req, res, next) {
 
-    console.log('### MCA ### \r\n' + req.body);
+    // ToDo: implement Validating
 
     lightelement.create(req.body, function(err, post) {
         if (err) return next(err);
@@ -42,7 +46,7 @@ router.put('/:light_id', function(req, res, next) {
     lightelement.findByIdAndUpdate(req.params.light_id, tmpLight, function(err, result) {
         if (err) throw err;
 
-        var PORT = 1234;
+        var PORT = 11111;
         var HOST = '192.168.0.39';
         var dgram = require('dgram');
         var message = Buffer(JSON.stringify(tmpLight));

@@ -9,8 +9,8 @@ var server = net.createServer(function(socket) {
 server.listen(1337, '127.0.0.1');
 */
 
-var PORT = 1234;
-var HOST = '192.168.10.230';
+var PORT = 11111;
+var HOST = '192.168.10.240';
 
 var data = '{' +
     '"id": "18fe34d457a",' +
@@ -18,8 +18,8 @@ var data = '{' +
     '"type": "rgb",' +
     '"mode": "color",' + // e.g. color / fade / pulse / rainbow_fade / rainbow_chase
     '"values": {' +
-    '  "red": 0,' +
-    '  "green": 0,' +
+    '  "red": 255,' +
+    '  "green": 30,' +
     '  "blue": 0' +
     '  }' +
     '}';

@@ -10,6 +10,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/lightswitch');
 
+// Mongoose Models
 require('./models/lightelement');
 
 // Main Routes
