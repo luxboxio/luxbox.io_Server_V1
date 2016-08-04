@@ -10,17 +10,17 @@ server.listen(1337, '127.0.0.1');
 */
 
 var PORT = 11111;
-var HOST = '192.168.10.240';
+var HOST = '192.168.10.147';
 
 var data = '{' +
-    '"id": "18fe34d457a",' +
+    '"id": "18:FE:34:D4:4E:43",' + //18fe34d457a
     '"area": 0,' +
     '"type": "rgb",' +
-    '"mode": "color",' + // e.g. color / fade / pulse / rainbow_fade / rainbow_chase
+    '"mode": "clientolor",' + // e.g. color / fade / pulse / rainbow_fade / rainbow_chase
     '"values": {' +
-    '  "red": 255,' +
-    '  "green": 30,' +
-    '  "blue": 0' +
+    '  "red": 20,' +
+    '  "green": 0,' +
+    '  "blue": 30' +
     '  }' +
     '}';
 
@@ -31,6 +31,9 @@ var client = dgram.createSocket('udp4');
 client.send(message, 0, message.length, PORT, HOST, function(err, bytes) {
     if (err) throw err;
     console.log('UDP message sent to ' + HOST + ':' + PORT);
+
+    var buff = new Buffer(bytes);
+    console.log(buff.toString(undefined));
     client.close();
 });
 

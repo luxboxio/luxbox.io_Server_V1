@@ -3,15 +3,15 @@ extends layout
 block content
   .container(ng-controller="LighSwitchController")
     h1 lights
-    .well {{lights}}
-    p set colors and add new elements
+    //.well {{lights}}
+    p set colors for available
     .row.well(ng-repeat='light in lights')
       .col-sm-2
         img.img-circle(src='images/lightelement_thumb_1.png', alt='lightelement thumbnail', width='96', height='96')
       .col-sm-4
         h3 {{light.name}}
         p ID: {{light.light_id}}
-        p IP: 192.168.xxx.xxx
+        p IP: {{light.ip}}
         p areas: {{light.areas.length}}
       .col-sm-4
         .col-sm-12.form.form-horizontal(role='form', ng-repeat='area in light.areas')
