@@ -10,17 +10,17 @@ server.listen(1337, '127.0.0.1');
 */
 
 var PORT = 11111;
-var HOST = '192.168.10.147';
+var HOST = '192.168.0.35';
 
 var data = '{' +
-    '"id": "18:FE:34:D4:4E:43",' + //18fe34d457a
+    '"id": "18:FE:34:D4:4E:43",' + //18fe34d457a //"} from 192.168.0.35:111
     '"area": 0,' +
     '"type": "rgb",' +
-    '"mode": "clientolor",' + // e.g. color / fade / pulse / rainbow_fade / rainbow_chase
+    '"mode": "color",' + // e.g. color / fade / pulse / rainbow_fade / rainbow_chase
     '"values": {' +
-    '  "red": 20,' +
+    '  "red": 80,' +
     '  "green": 0,' +
-    '  "blue": 30' +
+    '  "blue": 20' +
     '  }' +
     '}';
 

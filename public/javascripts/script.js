@@ -19,7 +19,7 @@ LighSwitchModule.controller('LighSwitchController', function($scope, $http) {
 
         console.log(light);
 
-        $http.put('/lights/' + light._id, angular.toJson(light)).then(function(response) {
+        $http.put('/lights/' + light.light_id, angular.toJson(light)).then(function(response) {
             console.log('Success: ' + response.status);
         }, function(response) {
             console.log('Error: ' + response.status);
@@ -27,7 +27,30 @@ LighSwitchModule.controller('LighSwitchController', function($scope, $http) {
     }
 
     $scope.lightOff = function(light) {
-        data = 'rgb to null!!!';
-        $http.put('/lights/' + id, data, config);
+
+        // ToDo: set all color values to zero
+        for (var i = 0; i < light.areas.length; i++) {
+            for (var j = 0; j < light.areas[i].values.length; j++) {
+                light.areas[i].values[j].value = 0;
+            }
+        }
+
+        console.log(light);
+
+        $http.put('/lights/' + light.light_id, angular.toJson(light)).then(function(response) {
+            console.log('Success: ' + response.status);
+        }, function(response) {
+            console.log('Error: ' + response.status);
+        });
+    }
+
+    $scope.removeLight = function(light) {
+
+        $http.delete('/lights/' + light.light_id).then(function(response) {
+            console.log('Success: ' + response.status);
+
+        }, function(response) {
+            console.log('Error: ' + response.status);
+        });
     }
 });

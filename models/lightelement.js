@@ -1,3 +1,5 @@
+var debug = require('debug')('lightswitch_space_MONGOOSE');
+
 // grab the things we need
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
@@ -14,7 +16,7 @@ var lightelementSchema = new Schema({
         color_mode: String,
         values: [{
             color: String,
-            value: Number
+            value: { type: Number, default: 0 }
         }]
     }],
     created_at: Date,
@@ -23,7 +25,7 @@ var lightelementSchema = new Schema({
     collection: 'lightelement'
 });
 
-// on every save, add the date
+// on every save, add the date // ToDo: Cleanup
 lightelementSchema.pre('save', function(next) {
     // get the current date
     var currentDate = new Date();
@@ -35,6 +37,21 @@ lightelementSchema.pre('save', function(next) {
     if (!this.created_at) {
         this.created_at = currentDate;
     }
+
+    next();
+});
+
+// on every update, add the date
+lightelementSchema.pre('update', function(next) {
+    debug('pre Update...');
+    // get the current date
+    var currentDate = new Date();
+
+    // change the updated_at field to current date
+    this._update.$set.updated_at = currentDate;
+
+
+    debug(this._update.$set);
 
     next();
 });

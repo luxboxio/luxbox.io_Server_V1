@@ -19,6 +19,10 @@ var lights = require('./routes/lights');
 var scenes = require('./routes/scenes');
 var settings = require('./routes/settings');
 
+// UPD broadcast handling for lightelements
+require('./lightelements/broadcasting');
+require('./spaceapi/spaceapi');
+
 // Express Server Application
 var app = express();
 

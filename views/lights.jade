@@ -12,6 +12,7 @@ block content
         h3 {{light.name}}
         p ID: {{light.light_id}}
         p IP: {{light.ip}}
+        p last seen: {{light.updated_at | date: 'medium'}}
         p areas: {{light.areas.length}}
       .col-sm-4
         .col-sm-12.form.form-horizontal(role='form', ng-repeat='area in light.areas')
@@ -24,7 +25,10 @@ block content
               input#md.form-control(type='text', ng-model='value.value')
               //input#md.form-control(type='text', value='{{value.value}}')
       .col-sm-2
-        .col-sm-6
+        .col-sm-4
           button.btn.btn-success(type='button', ng-click='setColor(light)') Set
-        .col-sm-6
+        .col-sm-4
           button.btn.btn-danger(type='button', ng-click='lightOff(light)') Off
+        .col-sm-4
+          button.btn.btn-info(type='button', ng-click='removeLight(light)') Del
+          
