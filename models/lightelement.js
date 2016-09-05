@@ -9,11 +9,13 @@ var lightelementSchema = new Schema({
     light_id: String,
     name: String,
     ip: String,
+    fw_version: String,
     areas: [{
         number: Number,
         name: String,
         color_type: String,
-        color_mode: String,
+        color_mode: { type: Number, default: 0 },
+        supported_modes: String,
         values: [{
             color: String,
             value: { type: Number, default: 0 }

@@ -3,3 +3,4 @@
 *.sublime-project
 *.idea
 *.sublime-workspace
+*.DS_Store
