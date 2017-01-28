@@ -1,4 +1,4 @@
-var debug = require('debug')('lightswitch_space_ROUTE');
+var debug = require('debug')('luxbox_io_ROUTE');
 var express = require('express');
 var router = express.Router();
 
@@ -23,7 +23,6 @@ router.get('/:light_id', function(req, res, next) {
         if (err) throw err;
         res.json(lightelement);
     });
-
 });
 
 
@@ -54,7 +53,13 @@ router.put('/:light_id', function(req, res, next) {
             debug(foundLightelement.areas);
 
             for (var i = 0; i < foundLightelement.areas.length; i++) {
-                debug(' in DB: ' + foundLightelement.areas[i]);
+                debug(' in DB : ' + foundLightelement.areas[i]);
+
+                var color_mode = tmpLight.areas[i].color_mode;
+
+                if (isInt(color_mode) && color_mode >= 0 && color_mode < 10) {
+                    foundLightelement.areas[i].color_mode = tmpLight.areas[i].color_mode;
+                }
 
                 for (var j = 0; j < foundLightelement.areas[i].values.length; j++) {
                     debug(' color: ' + foundLightelement.areas[i].values[j]);
@@ -68,7 +73,11 @@ router.put('/:light_id', function(req, res, next) {
                         debug(' old value: ' + foundLightelement.areas[i].values[j].value);
                         debug(' new value: ' + tmpLight.areas[i].values[j].value);
 
-                        foundLightelement.areas[i].values[j].value = tmpLight.areas[i].values[j].value;
+                        var value = tmpLight.areas[i].values[j].value;
+
+                        if (isInt(value) && value >= 0 && value < 256) {
+                            foundLightelement.areas[i].values[j].value = tmpLight.areas[i].values[j].value;
+                        }
                     }
 
                 }
@@ -114,5 +123,17 @@ router.delete('/:light_id', function(req, res, next) {
         debug('Lightelement "' + req.params.light_id + '"deleted!');
     });
 });
+
+
+// === HELPER ===
+
+function isInt(value) {
+    var x;
+    if (isNaN(value)) {
+        return false;
+    }
+    x = parseFloat(value);
+    return (x | 0) === x;
+}
 
 module.exports = router;

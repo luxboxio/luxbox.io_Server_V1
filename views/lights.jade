@@ -7,7 +7,7 @@ block content
     p set colors for available
     .row.well(ng-repeat='light in lights')
       .col-sm-2
-        img.img-circle(src='images/lightelement_thumb_1.png', alt='lightelement thumbnail', width='96', height='96')
+        img.img-circle(src='images/lightelement_thumb_1.svg', alt='lightelement thumbnail', width='96', height='96')
       .col-sm-4
         h3 {{light.name}}
         p ID: {{light.light_id}}
@@ -19,11 +19,15 @@ block content
           div
             h4.col-sm-12 area \#{{area.number + 1}}: {{area.name}}
               small  (type: {{area.color_type}})
-          .form-group.form-group-md(ng-repeat='value in area.values')
-            .control-label.col-sm-3.text-right {{value.color}}
+          .form-group.form-group-md
+            .control-label.col-sm-3.text-right mode
             .col-sm-9
-              input#md.form-control(type='text', ng-model='value.value')
-              //input#md.form-control(type='text', value='{{value.value}}')
+              input#md.form-control(type='text', ng-model='area.color_mode')
+          .form-group.form-group-md(ng-repeat='value in area.values')
+            .control-label.col-sm-3.text-right {{value.color}} ({{value.value}})
+            .col-sm-9
+              //input#md.form-control(type='text', ng-model='value.value')
+              input(type='range' , min='0',  max='255', step='1', ng-model='value.value')
       .col-sm-2
         .col-sm-4
           button.btn.btn-success(type='button', ng-click='setColor(light)') Set

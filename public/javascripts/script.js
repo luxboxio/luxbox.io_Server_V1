@@ -1,6 +1,6 @@
-// Angular Modul - lightswitch ===================================================
+// Angular Modul - luxbix ===================================================
 
-var LighSwitchModule = angular.module('lightswitch', []);
+var LighSwitchModule = angular.module('luxbox', []);
 
 
 LighSwitchModule.controller('LighSwitchController', function($scope, $http) {
